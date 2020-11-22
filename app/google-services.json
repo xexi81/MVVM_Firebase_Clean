@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "886805983374",
+    "firebase_url": "https://mmvm-d3f5b.firebaseio.com",
+    "project_id": "mmvm-d3f5b",
+    "storage_bucket": "mmvm-d3f5b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886805983374:android:cbb7c812911808aafed9df",
+        "android_client_info": {
+          "package_name": "edu.uoc.android.mvvmfirebaserecyclerbinding"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886805983374-jrqffoli0rvmo4pn79h2s3o89fv8sd61.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpd-Zm7jUVCLbuE8gd4udXbApL0m9qDok"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886805983374-jrqffoli0rvmo4pn79h2s3o89fv8sd61.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
