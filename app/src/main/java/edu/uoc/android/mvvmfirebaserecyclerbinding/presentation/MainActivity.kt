@@ -25,6 +25,7 @@ class MainActivity : BaseActivity() {
         setContentView(binding.root)
 
         observeData(binding)
+        observeFlow(binding)
     }
 
 
@@ -55,9 +56,32 @@ class MainActivity : BaseActivity() {
         })
     }
 
+    private fun observeFlow(binding: ActivityMainBinding) {
 
-    fun appIsOutDated(actualVerion: Int): Boolean {
-        return BuildConfig.VERSION_CODE < actualVerion
+        viewModel.fetchVersionCodeFlow.observe(this, Observer {result ->
+
+            when(result) {
+                is Resource.Loading -> {
+                    binding.progressBar.showView()
+                    binding.txtVersionCodeFlow.hideView()
+                }
+                is Resource.Success -> {
+                    binding.txtVersionCodeFlow.text = result.data.toString()
+                    binding.progressBar.hideView()
+                    binding.txtVersionCodeFlow.showView()
+                }
+                is Resource.Failure -> {
+                    binding.txtVersionCodeFlow.text = "Error version request"
+                    binding.progressBar.hideView()
+                    binding.txtVersionCodeFlow.showView()
+                    Log.w("Sergio", result.exception.message.toString())
+                }
+            }
+        })
+    }
+
+    fun appIsOutDated(actualVersion: Int): Boolean {
+        return BuildConfig.VERSION_CODE < actualVersion
     }
 }
 
