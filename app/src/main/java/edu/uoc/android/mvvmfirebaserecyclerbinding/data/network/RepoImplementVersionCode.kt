@@ -32,7 +32,7 @@ class RepoImplementVersionCode: IRepoVersionCode {
             .collection("Params")
             .document("app")
 
-        val subscription = eventDocument.addSnapshotListener{ documentSnapshot, _ ->
+        val subscription = eventDocument.addSnapshotListener{ documentSnapshot, firebaseFirestoreException ->
             if (documentSnapshot != null && documentSnapshot.exists()) {
                 if (documentSnapshot.getLong("version") == null) {
                     val version = 0
@@ -41,11 +41,10 @@ class RepoImplementVersionCode: IRepoVersionCode {
                     val version = documentSnapshot.getLong("version")!!.toInt()
                     offer(Resource.Success(version))
                 }
-            } else {
-                channel.close()
-            }
+            } else channel.close(firebaseFirestoreException?.cause)
         }
 
         awaitClose{ subscription.remove() }
+
     }
 }
